@@ -4,7 +4,7 @@ import './Table.scss';
 export const Table = ({ data }) => {
     const arr = data.map((item) => {
         return (
-            <tr key={item._id}>
+            <tr key={item._id || item.id}>
                 <td>{item.date_created}</td>
                 <td>{item.number}</td>
                 <td>{item.date_supplied}</td>

@@ -15,7 +15,25 @@ export const getInvoices = () => {
         } catch (error) {
             dispatch({
                 type: invoicesTypes.GET_INVOICES_ERROR,
-                payload: error,
+                payload: error.message,
+            });
+        }
+    };
+};
+
+export const addInvoice = (invoice) => {
+    return async (dispatch) => {
+        dispatch({ type: invoicesTypes.ADD_INVOICE });
+        try {
+            const { data } = await axios.post(_URL, invoice);
+            dispatch({
+                type: invoicesTypes.ADD_INVOICE_SUCCESS,
+                payload: data,
+            });
+        } catch (error) {
+            dispatch({
+                type: invoicesTypes.ADD_INVOICE_ERROR,
+                payload: error.message,
             });
         }
     };

@@ -29,6 +29,27 @@ const reducer = (state = initialState, action) => {
                 error: action.payload,
             };
         }
+        case invoicesTypes.ADD_INVOICE: {
+            return {
+                loading: true,
+                data: [],
+                error: null,
+            };
+        }
+        case invoicesTypes.ADD_INVOICE_SUCCESS: {
+            return {
+                loading: false,
+                data: [...state.data, action.payload],
+                error: null,
+            };
+        }
+        case invoicesTypes.ADD_INVOICE_ERROR: {
+            return {
+                loading: false,
+                data: state.data,
+                error: action.payload,
+            };
+        }
         default:
             return state;
     }

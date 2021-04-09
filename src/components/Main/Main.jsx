@@ -1,21 +1,21 @@
 import React, { useEffect } from 'react';
-import { PageTitle } from '../PageTitle';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { actions } from '../../state';
+import { PageTitle } from '../PageTitle';
 import { Table } from '../Table';
 import { PageSection } from '../PageSection';
-import { useActions } from '../../hooks/useActions';
-import { useSelector } from 'react-redux';
-
-import { actions } from '../../state';
 
 import './Main.scss';
 
 export const Main = () => {
     const { loading, error, data } = useSelector((state) => state.invoices);
-    const invoicesActions = useActions(actions.invoicesActions);
+    const dispatch = useDispatch();
+
     useEffect(() => {
-        invoicesActions.getInvoices();
-    }, []);
+        dispatch(actions.invoicesActions.getInvoices());
+    }, [dispatch]);
+
     return (
         <section className="main">
             <PageTitle title="Invoices" />
@@ -27,9 +27,13 @@ export const Main = () => {
                 </PageSection>
             </div>
             <div className="main__invoices">
-                <PageSection name="Invoices">
-                    <Table data={data} />
-                </PageSection>
+                {loading && <div>Loading...</div>}
+                {error && <div>{error}</div>}
+                {!loading && !error && (
+                    <PageSection name="Invoices">
+                        <Table data={data} />
+                    </PageSection>
+                )}
             </div>
         </section>
     );
