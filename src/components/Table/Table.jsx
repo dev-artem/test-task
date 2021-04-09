@@ -1,7 +1,17 @@
 import React from 'react';
 import './Table.scss';
 
-export const Table = () => {
+export const Table = ({ data }) => {
+    const arr = data.map((item) => {
+        return (
+            <tr key={item._id}>
+                <td>{item.date_created}</td>
+                <td>{item.number}</td>
+                <td>{item.date_supplied}</td>
+                <td>{item.comment}</td>
+            </tr>
+        );
+    });
     return (
         <table className="table">
             <thead>
@@ -12,20 +22,7 @@ export const Table = () => {
                     <th>Comment</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>20-03-2018</td>
-                    <td>INV-000001</td>
-                    <td>20-03-2018</td>
-                    <td>Test invoice</td>
-                </tr>
-                <tr>
-                    <td>20-03-2018</td>
-                    <td>INV-000001</td>
-                    <td>20-03-2018</td>
-                    <td>Test invoice</td>
-                </tr>
-            </tbody>
+            <tbody>{arr}</tbody>
         </table>
     );
 };
