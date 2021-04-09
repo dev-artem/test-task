@@ -1,0 +1,16 @@
+@import '../vars';
+
+.title {
+    display: flex;
+    align-items: center;
+    &__name {
+        white-space: nowrap;
+        padding: 10px 20px;
+        border-left: 5px solid $dark-grey;
+        color: $grey-font;
+    }
+    &__line {
+        border-top: 1px solid $dark-grey;
+        width: 100%;
+    }
+}

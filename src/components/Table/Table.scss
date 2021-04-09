@@ -1,0 +1,17 @@
+@import '../vars';
+
+.table {
+    border-spacing: 0px;
+    width: 100%;
+    &__header {
+        text-align: left;
+        background-color: $bgc;
+    }
+
+    & > tr > th,
+    td {
+        padding: 20px;
+        border-bottom: 1px solid $bgc;
+        color: $grey-font;
+    }
+}

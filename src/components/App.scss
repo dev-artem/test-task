@@ -1,0 +1,11 @@
+@import 'vars';
+
+body {
+    background-color: $bgc;
+}
+
+.container {
+    width: 1150px;
+    margin: 0 auto;
+    padding: 20px;
+}

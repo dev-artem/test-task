@@ -3,15 +3,17 @@ import { Main } from './Main';
 import { Invoice } from './Invoice';
 import './App.scss';
 
-function App() {
+const App = () => {
     return (
-        <Router>
-            <Switch>
-                <Route path="/" exact component={Main} />
-                <Route path="/create" component={Invoice} />
-            </Switch>
-        </Router>
+        <div className="container">
+            <Router>
+                <Switch>
+                    <Route path="/" exact component={Main} />
+                    <Route path="/create" component={Invoice} />
+                </Switch>
+            </Router>
+        </div>
     );
-}
+};
 
 export default App;
