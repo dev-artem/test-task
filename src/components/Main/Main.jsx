@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageTitle } from '../PageTitle';
-import { Button } from '../Button';
+import { Link } from 'react-router-dom';
 import { Table } from '../Table';
 import { PageSection } from '../PageSection';
 import './Main.scss';
@@ -11,7 +11,9 @@ export const Main = () => {
             <PageTitle title="Invoices" />
             <div className="main__actions">
                 <PageSection name="Actions">
-                    <Button name="Add new" />
+                    <Link className="btn" to="/create">
+                        Add new
+                    </Link>
                 </PageSection>
             </div>
             <div className="main__invoices">
