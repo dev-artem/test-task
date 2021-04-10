@@ -8,3 +8,9 @@
         background-color: #fff;
     }
 }
+
+@media screen and (max-width: $width-md) {
+    .invoice__form {
+        padding: 10px;
+    }
+}

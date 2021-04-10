@@ -3,6 +3,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
+    font-size: $fz-std;
     border: 1px solid $dark-grey;
     &__field {
         padding: 20px;
@@ -35,5 +36,12 @@
             grid-column-start: 2;
             justify-self: end;
         }
+    }
+}
+
+@media screen and (max-width: $width-lg) {
+    .form {
+        display: flex;
+        flex-direction: column;
     }
 }

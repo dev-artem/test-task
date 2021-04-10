@@ -14,7 +14,7 @@ export const Form = () => {
     const [num, setNum] = useState('');
     const [comment, setComment] = useState('');
     const dispatch = useDispatch();
-    const { loading, error } = useSelector((state) => state.invoices);
+    const { error } = useSelector((state) => state.invoices);
 
     const onChangeHandler = (e) => {
         if (e.target.value.length > 160) {
@@ -32,23 +32,22 @@ export const Form = () => {
         }
         const { addInvoice } = actions.invoicesActions;
         const invoice = {
-            id: nanoid(),
+            _id: nanoid(),
             number: num,
             date_created: formatDate(e.target.date.value),
             date_supplied: formatDate(e.target.supply_date.value),
             comment: comment,
         };
         await dispatch(addInvoice(invoice));
-        if (!error && !loading) {
+        if (!error) {
             history.push('/');
         }
     };
 
     return (
         <>
-            {loading && <div>Loading</div>}
             {error && <div>{error}</div>}
-            {!loading && !error && (
+            {!error && (
                 <form className="form" onSubmit={onSubmitHandler}>
                     <div className="form__field">
                         <label>Number:</label>
